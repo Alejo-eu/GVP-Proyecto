@@ -29,7 +29,7 @@
     <!-- Stats Cards -->
     <div class="row g-4 mb-4">
         <div class="col-md-3">
-            <div class="card border-0 shadow-sm">
+            <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
@@ -45,7 +45,7 @@
         </div>
         
         <div class="col-md-3">
-            <div class="card border-0 shadow-sm">
+            <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
@@ -61,7 +61,7 @@
         </div>
         
         <div class="col-md-3">
-            <div class="card border-0 shadow-sm">
+            <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
@@ -77,7 +77,7 @@
         </div>
         
         <div class="col-md-3">
-            <div class="card border-0 shadow-sm">
+            <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
@@ -96,7 +96,7 @@
     <div class="row">
         <!-- Inventario -->
         <div class="col-md-7">
-            <div class="card border-0 shadow-sm mb-4">
+            <div class="card mb-4">
                 <div class="card-header bg-white border-0 py-3 d-flex justify-content-between align-items-center">
                     <h5 class="fw-bold mb-0">
                         <i class="bi bi-box me-2"></i>
@@ -153,7 +153,7 @@
         <!-- Información y acciones -->
         <div class="col-md-5">
             <!-- Descripción -->
-            <div class="card border-0 shadow-sm mb-4">
+            <div class="card mb-4">
                 <div class="card-header bg-white border-0 py-3">
                     <h5 class="fw-bold mb-0">
                         <i class="bi bi-file-text me-2"></i>
@@ -171,7 +171,7 @@
 
             <!-- Stock Bajo -->
             @if($stockBajo->count() > 0)
-            <div class="card border-0 shadow-sm mb-4">
+            <div class="card mb-4">
                 <div class="card-header bg-white border-0 py-3">
                     <h5 class="fw-bold mb-0 text-warning">
                         <i class="bi bi-exclamation-triangle me-2"></i>
@@ -201,7 +201,7 @@
             @endif
 
             <!-- Acciones rápidas -->
-            <div class="card border-0 shadow-sm">
+            <div class="card">
                 <div class="card-header bg-white border-0 py-3">
                     <h5 class="fw-bold mb-0">
                         <i class="bi bi-lightning-charge me-2"></i>
@@ -235,7 +235,7 @@
     <!-- Últimos movimientos -->
     <div class="row mt-4">
         <div class="col-12">
-            <div class="card border-0 shadow-sm">
+            <div class="card">
                 <div class="card-header bg-white border-0 py-3 d-flex justify-content-between align-items-center">
                     <h5 class="fw-bold mb-0">
                         <i class="bi bi-clock-history me-2"></i>

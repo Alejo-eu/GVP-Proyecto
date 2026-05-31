@@ -26,9 +26,9 @@
     <div class="row">
         <!-- Información del producto -->
         <div class="col-md-4">
-            <div class="card border-0 shadow-sm mb-4">
+            <div class="card mb-4">
                 <div class="card-body text-center p-4">
-                    <div class="avatar-lg bg-light rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
+                    <div class="avatar-lg bg-light bg-opacity-50 rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
                         <i class="bi bi-box text-primary" style="font-size: 3rem;"></i>
                     </div>
                     <h4 class="fw-bold">{{ $producto->nombre }}</h4>
@@ -39,7 +39,7 @@
                 </div>
             </div>
 
-            <div class="card border-0 shadow-sm">
+            <div class="card">
                 <div class="card-body p-4">
                     <h5 class="fw-bold mb-3">Precios</h5>
                     <div class="d-flex justify-content-between mb-2">
@@ -66,7 +66,7 @@
 
         <!-- Stock por almacenes -->
         <div class="col-md-8">
-            <div class="card border-0 shadow-sm mb-4">
+            <div class="card mb-4">
                 <div class="card-header bg-white border-0 py-3">
                     <h5 class="fw-bold mb-0">
                         <i class="bi bi-buildings me-2"></i>
@@ -118,7 +118,7 @@
 
             <!-- Descripción -->
             @if($producto->descripcion)
-            <div class="card border-0 shadow-sm mb-4">
+            <div class="card mb-4">
                 <div class="card-header bg-white border-0 py-3">
                     <h5 class="fw-bold mb-0">
                         <i class="bi bi-file-text me-2"></i>
@@ -132,7 +132,7 @@
             @endif
 
             <!-- Últimos movimientos -->
-            <div class="card border-0 shadow-sm">
+            <div class="card">
                 <div class="card-header bg-white border-0 py-3">
                     <h5 class="fw-bold mb-0">
                         <i class="bi bi-clock-history me-2"></i>

@@ -18,7 +18,7 @@
     </div>
 
     <!-- Formulario -->
-    <div class="card border-0 shadow-sm">
+    <div class="card">
         <div class="card-body p-4">
             <form method="POST" action="{{ route('productos.store') }}">
                 @csrf

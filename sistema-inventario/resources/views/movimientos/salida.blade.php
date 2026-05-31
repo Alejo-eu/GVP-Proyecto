@@ -6,7 +6,7 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h2 class="fw-bold">
-                <i class="bi bi-box-arrow-up me-2 text-danger"></i>
+                <i class="bi bi-arrow-up-circle me-2 text-danger"></i>
                 Registrar Salida
             </h2>
             <p class="text-muted">Registra la salida de productos de los almacenes</p>
@@ -18,7 +18,7 @@
     </div>
 
     <!-- Formulario -->
-    <div class="card border-0 shadow-sm">
+    <div class="card">
         <div class="card-body p-4">
             <form method="POST" action="{{ route('movimientos.salida.store') }}" id="formSalida">
                 @csrf
@@ -27,7 +27,7 @@
                     <div class="col-md-6 mx-auto">
                         <div class="mb-4 text-center">
                             <div class="avatar-lg bg-danger bg-opacity-10 rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                                <i class="bi bi-box-arrow-up text-danger" style="font-size: 2rem;"></i>
+                                <i class="bi bi-arrow-up-circle text-danger" style="font-size: 2rem;"></i>
                             </div>
                             <h5>Salida de Productos</h5>
                             <p class="text-muted small">Complete la información de la salida</p>

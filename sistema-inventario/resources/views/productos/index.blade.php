@@ -6,19 +6,19 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h2 class="fw-bold">
-                <i class="bi bi-box me-2"></i>
-                Productos
+                <i class="bi bi-journals me-2"></i>
+                Materiales
             </h2>
-            <p class="text-muted">Gestiona tu catálogo de productos</p>
+            <p class="text-muted">Gestiona el catálogo de materiales y recursos educativos</p>
         </div>
         <a href="{{ route('productos.create') }}" class="btn btn-primary">
             <i class="bi bi-plus-circle me-2"></i>
-            Nuevo Producto
+            Nuevo Material
         </a>
     </div>
 
     <!-- Filtros y búsqueda -->
-    <div class="card border-0 shadow-sm mb-4">
+    <div class="card mb-4">
         <div class="card-body">
             <form method="GET" action="{{ route('productos.index') }}" class="row g-3">
                 <div class="col-md-5">
@@ -57,15 +57,15 @@
     </div>
 
     <!-- Tabla de productos -->
-    <div class="card border-0 shadow-sm">
+    <div class="card">
         <div class="card-body p-0">
             @if($productos->count() > 0)
                 <div class="table-responsive">
                     <table class="table table-hover align-middle mb-0">
-                        <thead class="bg-light">
+                        <thead class="bg-light bg-opacity-50">
                             <tr>
                                 <th class="ps-4">Código</th>
-                                <th>Producto</th>
+                                <th>Material</th>
                                 <th>Precios</th>
                                 <th>Stock Total</th>
                                 <th>Stock Mínimo</th>
@@ -83,8 +83,8 @@
                                 </td>
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <div class="avatar-sm bg-light rounded p-2 me-3">
-                                            <i class="bi bi-box text-primary"></i>
+                                        <div class="avatar-sm bg-light bg-opacity-50 rounded p-2 me-3">
+                                            <i class="bi bi-journals text-primary"></i>
                                         </div>
                                         <div>
                                             <h6 class="mb-1">{{ $producto->nombre }}</h6>
@@ -137,7 +137,7 @@
                                             <form action="{{ route('productos.toggle-status', $producto) }}" 
                                                   method="POST" 
                                                   class="d-inline"
-                                                  onsubmit="return confirm('¿Estás seguro de desactivar este producto?')">
+                                                  onsubmit="return confirm('¿Estás seguro de desactivar este material?')">
                                                 @csrf
                                                 @method('PUT')
                                                 <button type="submit" class="btn btn-sm btn-outline-danger" title="Desactivar">
@@ -148,7 +148,7 @@
                                             <form action="{{ route('productos.toggle-status', $producto) }}" 
                                                   method="POST" 
                                                   class="d-inline"
-                                                  onsubmit="return confirm('¿Estás seguro de activar este producto?')">
+                                                  onsubmit="return confirm('¿Estás seguro de activar este material?')">
                                                 @csrf
                                                 @method('PUT')
                                                 <button type="submit" class="btn btn-sm btn-outline-success" title="Activar">
@@ -159,7 +159,7 @@
                                         <form action="{{ route('productos.destroy', $producto) }}" 
                                               method="POST" 
                                               class="d-inline"
-                                              onsubmit="return confirm('¿Estás seguro de eliminar este producto?')">
+                                              onsubmit="return confirm('¿Estás seguro de eliminar este material?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-outline-danger" title="Eliminar">
@@ -180,12 +180,12 @@
                 </div>
             @else
                 <div class="text-center py-5">
-                    <i class="bi bi-box-seam fs-1 text-muted"></i>
-                    <h5 class="mt-3">No hay productos</h5>
-                    <p class="text-muted">Comienza agregando tu primer producto</p>
+                    <i class="bi bi-journals fs-1 text-muted"></i>
+                    <h5 class="mt-3">No hay materiales</h5>
+                    <p class="text-muted">Comienza agregando tu primer material</p>
                     <a href="{{ route('productos.create') }}" class="btn btn-primary">
                         <i class="bi bi-plus-circle me-2"></i>
-                        Nuevo Producto
+                        Nuevo Material
                     </a>
                 </div>
             @endif
@@ -250,7 +250,7 @@
 @push('scripts')
 <script>
 function abrirModalStock(productoId, productoNombre) {
-    document.getElementById('productoNombre').textContent = 'Producto: ' + productoNombre;
+    document.getElementById('productoNombre').textContent = 'Material: ' + productoNombre;
     document.getElementById('formAjustarStock').action = `/productos/${productoId}/ajustar-stock`;
     new bootstrap.Modal(document.getElementById('modalAjustarStock')).show();
 }
@@ -268,14 +268,28 @@ document.getElementById('formAjustarStock').addEventListener('submit', function(
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            alert(data.message);
-            location.reload();
+            window.Toast.fire({
+                icon: 'success',
+                title: data.message
+            }).then(() => {
+                location.reload();
+            });
         } else {
-            alert(data.message);
+            Swal.fire({
+                icon: 'error',
+                title: '¡Atención!',
+                text: data.message,
+                confirmButtonColor: 'var(--primary)'
+            });
         }
     })
     .catch(error => {
-        alert('Error al procesar la solicitud');
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Error al procesar la solicitud',
+            confirmButtonColor: 'var(--primary)'
+        });
     });
 });
 </script>

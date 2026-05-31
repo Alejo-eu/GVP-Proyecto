@@ -13,11 +13,11 @@
         </div>
         <div>
             <a href="{{ route('movimientos.entrada') }}" class="btn btn-success me-2">
-                <i class="bi bi-box-arrow-in-down me-2"></i>
+                <i class="bi bi-arrow-down-circle me-2"></i>
                 Nueva Entrada
             </a>
             <a href="{{ route('movimientos.salida') }}" class="btn btn-danger me-2">
-                <i class="bi bi-box-arrow-up me-2"></i>
+                <i class="bi bi-arrow-up-circle me-2"></i>
                 Nueva Salida
             </a>
             <a href="{{ route('movimientos.traslado') }}" class="btn btn-warning text-dark">
@@ -28,7 +28,7 @@
     </div>
 
     <!-- Filtros -->
-    <div class="card border-0 shadow-sm mb-4">
+    <div class="card mb-4">
         <div class="card-body">
             <form method="GET" action="{{ route('movimientos.historial') }}" class="row g-3">
                 <div class="col-md-2">
@@ -80,7 +80,7 @@
     </div>
 
     <!-- Tabla de movimientos -->
-    <div class="card border-0 shadow-sm">
+    <div class="card">
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table table-hover mb-0">

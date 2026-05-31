@@ -7,8 +7,9 @@
     <title>{{ config('app.name', 'Sistema Inventario') }} - Login</title>
     
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
     
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -16,110 +17,182 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     
     <style>
+        :root {
+            --primary: #2a6f97;
+            --primary-hover: #1a4f6d;
+            --secondary: #a9d6e5;
+            --background: #f8f9fa;
+            --surface: #ffffff;
+            --surface-variant: #e1e3e4;
+            --on-surface: #191c1d;
+            --on-surface-variant: #40484e;
+            --error: #ba1a1a;
+            --input-bg: #f1f3f5;
+        }
+
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Source Sans 3', sans-serif;
+            background-color: var(--background);
+            color: var(--on-surface);
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0;
-            padding: 0;
+            padding: 20px;
         }
         
         .login-container {
             width: 100%;
-            max-width: 400px;
-            padding: 20px;
+            max-width: 420px;
         }
         
         .card {
+            background-color: var(--surface);
             border: none;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            border-radius: 24px;
+            box-shadow: 0px 12px 40px rgba(42, 111, 151, 0.12);
             overflow: hidden;
+            padding: 40px 32px;
         }
         
-        .card-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+        .card-header-custom {
             text-align: center;
-            padding: 30px 20px;
-            border: none;
+            margin-bottom: 32px;
         }
         
-        .card-header h3 {
+        .brand-icon {
+            font-size: 48px;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: inline-block;
+            background: var(--secondary);
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 999px;
+        }
+        
+        h3 {
+            font-family: 'Manrope', sans-serif;
+            margin: 0 0 8px 0;
+            font-weight: 700;
+            font-size: 28px;
+            color: var(--on-surface);
+        }
+        
+        p.subtitle {
             margin: 0;
-            font-weight: 600;
-            font-size: 24px;
-        }
-        
-        .card-header p {
-            margin: 10px 0 0;
-            opacity: 0.9;
-            font-size: 14px;
-        }
-        
-        .card-body {
-            padding: 40px 30px;
-            background: white;
+            color: var(--on-surface-variant);
+            font-size: 16px;
         }
         
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 24px;
             position: relative;
         }
         
-        .form-group i {
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--on-surface);
+        }
+        
+        .input-icon-wrapper {
+            position: relative;
+        }
+        
+        .input-icon-wrapper i {
             position: absolute;
-            left: 15px;
+            left: 16px;
             top: 50%;
             transform: translateY(-50%);
-            color: #999;
+            color: var(--on-surface-variant);
             font-size: 18px;
+            pointer-events: none;
+            transition: color 0.3s ease;
         }
         
         .form-control {
-            height: 50px;
-            padding: 10px 15px 10px 45px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 14px;
+            background-color: var(--input-bg);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            height: 52px;
+            padding: 12px 16px 12px 48px;
+            font-size: 16px;
+            font-family: 'Source Sans 3', sans-serif;
+            color: var(--on-surface);
             transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .form-control::placeholder {
+            color: #8c97a1;
         }
         
         .form-control:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+            background-color: var(--surface);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(42, 111, 151, 0.1);
+            outline: none;
+        }
+
+        .form-control:focus + i {
+            color: var(--primary);
         }
         
         .form-check {
-            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+        
+        .form-check-input {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            border: 2px solid var(--surface-variant);
+            background-color: var(--surface);
+            margin-top: 0;
+            margin-right: 12px;
+            cursor: pointer;
+        }
+        
+        .form-check-input:checked {
+            background-color: var(--primary);
+            border-color: var(--primary);
         }
         
         .form-check-label {
-            color: #666;
+            color: var(--on-surface-variant);
             font-size: 14px;
+            cursor: pointer;
         }
         
         .btn-login {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            height: 50px;
-            border-radius: 10px;
+            background-color: var(--primary);
             color: white;
+            border: none;
+            height: 56px;
+            border-radius: 12px;
+            font-family: 'Manrope', sans-serif;
             font-weight: 600;
-            font-size: 16px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 18px;
             width: 100%;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
         
         .btn-login:hover {
+            background-color: var(--primary-hover);
             transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 8px 24px rgba(42, 111, 151, 0.25);
         }
         
         .btn-login:active {
@@ -127,58 +200,46 @@
         }
         
         .alert-danger {
-            border-radius: 10px;
+            background-color: #ffdad6;
+            color: var(--error);
             border: none;
-            background: #fee;
-            color: #c33;
-            padding: 15px;
-            margin-bottom: 25px;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
             font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .alert-danger i {
+            font-size: 20px;
         }
         
         .invalid-feedback {
             font-size: 12px;
-            margin-top: 5px;
-            color: #dc3545;
-        }
-        
-        .footer-links {
-            text-align: center;
-            margin-top: 25px;
-        }
-        
-        .footer-links a {
-            color: #666;
-            text-decoration: none;
-            font-size: 13px;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: #667eea;
-        }
-        
-        .brand-icon {
-            font-size: 50px;
-            color: white;
-            margin-bottom: 15px;
+            margin-top: 6px;
+            color: var(--error);
+            display: block;
         }
     </style>
 </head>
 <body>
     <div class="login-container">
         <div class="card">
-            <div class="card-header">
-                <i class="bi bi-box-seam brand-icon"></i>
-                <h3>Sistema de Inventario</h3>
-                <p>Ingresa con tus credenciales</p>
+            <div class="card-header-custom">
+                <div class="brand-icon">
+                    <i class="bi bi-book"></i>
+                </div>
+                <h3>Recursos Educativos</h3>
+                <p class="subtitle">Gestión de Inventario Escolar</p>
             </div>
             
-            <div class="card-body">
+            <div class="card-body-custom">
                 @if($errors->any())
                     <div class="alert alert-danger">
-                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
-                        {{ $errors->first() }}
+                        <i class="bi bi-exclamation-octagon-fill"></i>
+                        <div>{{ $errors->first() }}</div>
                     </div>
                 @endif
                 
@@ -186,10 +247,13 @@
                     @csrf
                     
                     <div class="form-group">
-                        <i class="bi bi-envelope"></i>
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" 
-                               name="email" value="{{ old('email') }}" required autocomplete="email" 
-                               placeholder="Correo electrónico" autofocus>
+                        <label class="form-label" for="email">Correo Electrónico</label>
+                        <div class="input-icon-wrapper">
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" 
+                                   name="email" value="{{ old('email') }}" required autocomplete="email" 
+                                   placeholder="tu@escuela.edu" autofocus>
+                            <i class="bi bi-envelope"></i>
+                        </div>
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -198,10 +262,13 @@
                     </div>
                     
                     <div class="form-group">
-                        <i class="bi bi-lock"></i>
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" 
-                               name="password" required autocomplete="current-password" 
-                               placeholder="Contraseña">
+                        <label class="form-label" for="password">Contraseña</label>
+                        <div class="input-icon-wrapper">
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" 
+                                   name="password" required autocomplete="current-password" 
+                                   placeholder="Ingresa tu contraseña">
+                            <i class="bi bi-lock"></i>
+                        </div>
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -212,25 +279,14 @@
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                         <label class="form-check-label" for="remember">
-                            Recordarme
+                            Mantener sesión iniciada
                         </label>
                     </div>
                     
                     <button type="submit" class="btn-login">
-                        <i class="bi bi-box-arrow-in-right me-2"></i>
                         Ingresar
+                        <i class="bi bi-arrow-right"></i>
                     </button>
-                    
-                    <!-- 
-                    <div class="footer-links">
-                        @if (Route::has('password.request'))
-                            <a href="{{ route('password.request') }}">
-                                <i class="bi bi-question-circle me-1"></i>
-                                ¿Olvidaste tu contraseña?
-                            </a>
-                        @endif
-                    </div>
-                    -->
                 </form>
             </div>
         </div>

@@ -18,7 +18,7 @@
     </div>
 
     <!-- Búsqueda -->
-    <div class="card border-0 shadow-sm mb-4">
+    <div class="card mb-4">
         <div class="card-body">
             <form method="GET" class="row g-3">
                 <div class="col-md-8">
@@ -44,7 +44,7 @@
     </div>
 
     <!-- Tabla de inventario -->
-    <div class="card border-0 shadow-sm">
+    <div class="card">
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table table-hover mb-0">
