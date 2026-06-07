@@ -9,7 +9,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -18,21 +18,22 @@
     
     <style>
         :root {
-            --primary: #2a6f97;
-            --primary-hover: #1a4f6d;
-            --secondary: #a9d6e5;
-            --background: #f8f9fa;
-            --surface: #ffffff;
-            --surface-variant: #e1e3e4;
-            --on-surface: #191c1d;
-            --on-surface-variant: #40484e;
-            --error: #ba1a1a;
-            --input-bg: #f1f3f5;
+            --primary: #6366F1;
+            --primary-hover: #4F46E5;
+            --secondary: #EEF2FF;
+            --background: #F8FAFC;
+            --surface: #FFFFFF;
+            --surface-variant: #E2E8F0;
+            --on-surface: #0F172A;
+            --on-surface-variant: #64748B;
+            --error: #EF4444;
+            --input-bg: #F1F5F9;
         }
 
         body {
-            font-family: 'Source Sans 3', sans-serif;
-            background-color: var(--background);
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 27, 75, 0.7) 100%), url('https://i.postimg.cc/NM4BndJh/Gaston.jpg') no-repeat center center;
+            background-size: cover;
             color: var(--on-surface);
             height: 100vh;
             display: flex;
@@ -40,6 +41,12 @@
             justify-content: center;
             margin: 0;
             padding: 20px;
+            animation: fadeInPage 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeInPage {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
         
         .login-container {
@@ -48,10 +55,12 @@
         }
         
         .card {
-            background-color: var(--surface);
-            border: none;
+            background-color: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             border-radius: 24px;
-            box-shadow: 0px 12px 40px rgba(42, 111, 151, 0.12);
+            box-shadow: 0px 24px 50px rgba(0, 0, 0, 0.3), inset 0px 0px 0px 1px rgba(255,255,255,0.2);
             overflow: hidden;
             padding: 40px 32px;
         }
@@ -74,11 +83,12 @@
         }
         
         h3 {
-            font-family: 'Manrope', sans-serif;
+            font-family: 'Outfit', sans-serif;
             margin: 0 0 8px 0;
             font-weight: 700;
             font-size: 28px;
             color: var(--on-surface);
+            letter-spacing: -0.02em;
         }
         
         p.subtitle {
@@ -118,11 +128,11 @@
         .form-control {
             background-color: var(--input-bg);
             border: 2px solid transparent;
-            border-radius: 8px;
+            border-radius: 12px;
             height: 52px;
             padding: 12px 16px 12px 48px;
             font-size: 16px;
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Inter', sans-serif;
             color: var(--on-surface);
             transition: all 0.3s ease;
             width: 100%;
@@ -135,7 +145,7 @@
         .form-control:focus {
             background-color: var(--surface);
             border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(42, 111, 151, 0.1);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
             outline: none;
         }
 
@@ -177,7 +187,7 @@
             border: none;
             height: 56px;
             border-radius: 12px;
-            font-family: 'Manrope', sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-weight: 600;
             font-size: 18px;
             width: 100%;
@@ -192,7 +202,7 @@
         .btn-login:hover {
             background-color: var(--primary-hover);
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(42, 111, 151, 0.25);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.25);
         }
         
         .btn-login:active {
@@ -222,15 +232,70 @@
             color: var(--error);
             display: block;
         }
+        
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .loading-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .loader-content {
+            text-align: center;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+
+        .loading-overlay.active .loader-content {
+            transform: translateY(0);
+        }
+
+        .spinner-custom {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-left-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loader-content">
+            <div class="spinner-custom"></div>
+            <h4 style="color: white; font-family: 'Outfit', sans-serif; margin: 0 0 8px 0; font-size: 24px;">Autenticando...</h4>
+            <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 15px;">Preparando tu espacio de trabajo</p>
+        </div>
+    </div>
+
     <div class="login-container">
         <div class="card">
             <div class="card-header-custom">
-                <div class="brand-icon">
-                    <i class="bi bi-book"></i>
-                </div>
+                <img src="https://gastonvidalporturas.edu.pe/wp-content/uploads/2024/06/Logo-colegio-gaston-vidal.png" alt="Logo Colegio Gastón Vidal" style="height: 90px; width: auto; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
                 <h3>Recursos Educativos</h3>
                 <p class="subtitle">Gestión de Inventario Escolar</p>
             </div>
@@ -243,7 +308,7 @@
                     </div>
                 @endif
                 
-                <form method="POST" action="{{ route('login') }}">
+                <form id="login-form" method="POST" action="{{ route('login') }}">
                     @csrf
                     
                     <div class="form-group">
@@ -291,5 +356,19 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            // Check HTML5 validity before showing loader
+            if (this.checkValidity()) {
+                document.getElementById('loading-overlay').classList.add('active');
+                
+                // Disable button to prevent double clicks (visually)
+                const btn = document.querySelector('.btn-login');
+                btn.style.opacity = '0.7';
+                btn.style.pointerEvents = 'none';
+            }
+        });
+    </script>
 </body>
 </html>

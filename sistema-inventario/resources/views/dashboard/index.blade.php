@@ -2,15 +2,14 @@
 
 @section('content')
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap');
-
     .dashboard-wrapper {
-        font-family: 'Source Sans 3', sans-serif;
+        font-family: var(--font-body);
     }
 
     .dashboard-wrapper h2, .dashboard-wrapper h3, .dashboard-wrapper h5 {
-        font-family: 'Manrope', sans-serif;
+        font-family: var(--font-heading);
         color: var(--text-main);
+        letter-spacing: -0.02em;
     }
 
     .dashboard-wrapper .text-muted {
@@ -57,9 +56,9 @@
     }
 
     .custom-table th {
-        background-color: #F9FAFB;
+        background-color: #F8FAFC;
         color: var(--text-muted);
-        font-family: 'Source Sans 3', sans-serif;
+        font-family: var(--font-body);
         font-weight: 600;
         text-transform: uppercase;
         font-size: 12px;
@@ -112,11 +111,29 @@
 </style>
 
 <div class="container-fluid px-4 dashboard-wrapper">
-    <!-- Header -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-            <h2 class="fw-bold">Panel Principal</h2>
-            <p class="text-muted">Bienvenido de nuevo, {{ Auth::user()->name }}</p>
+    <!-- Header Banner -->
+    <div class="card border-0 mb-5 overflow-hidden position-relative shadow-sm" style="background: linear-gradient(135deg, var(--primary) 0%, #4338CA 100%); border-radius: var(--radius-lg);">
+        <!-- Decorative Background Shapes -->
+        <div class="position-absolute top-0 end-0 opacity-10" style="transform: translate(20%, -30%); pointer-events: none;">
+            <i class="bi bi-hexagon-fill" style="font-size: 18rem; color: white;"></i>
+        </div>
+        <div class="position-absolute bottom-0 end-0 opacity-10" style="transform: translate(-50%, 40%); pointer-events: none;">
+            <i class="bi bi-circle-fill" style="font-size: 12rem; color: white;"></i>
+        </div>
+        
+        <div class="card-body p-4 p-md-5 position-relative z-1 d-flex justify-content-between align-items-center">
+            <div class="text-white">
+                <div class="d-inline-flex align-items-center bg-white bg-opacity-25 rounded-pill px-3 py-2 mb-3 shadow-sm" style="backdrop-filter: blur(8px);">
+                    <i class="bi bi-stars text-warning me-2"></i>
+                    <span class="fw-medium text-white" style="font-size: 0.9rem;">Resumen General</span>
+                </div>
+                <h2 class="fw-bold mb-2 display-6 text-white" style="letter-spacing: -0.02em;">Panel Principal</h2>
+                <p class="mb-0 fs-5" style="color: rgba(255,255,255,0.85);">Bienvenido de nuevo, <span class="fw-bold text-white">{{ Auth::user()->name }}</span> 👋</p>
+            </div>
+            
+            <div class="d-none d-md-flex align-items-center justify-content-center pe-4">
+                <i class="bi bi-clipboard-data-fill" style="font-size: 7rem; color: rgba(255,255,255,0.15); filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));"></i>
+            </div>
         </div>
     </div>
 

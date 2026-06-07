@@ -2,12 +2,58 @@
 
 @section('content')
     <div class="container-fluid px-4">
-        <!-- Header -->
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <div>
-                <h2 class="fw-bold">Dashboard</h2>
-                <p class="text-muted">Bienvenido de nuevo, {{ Auth::user()->name }}</p>
+        <!-- Premium Header Banner -->
+        <div class="card border-0 mb-5 overflow-hidden position-relative shadow-lg" style="border-radius: 24px; background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 50%, #EC4899 100%);">
+            
+            <!-- Abstract background elements -->
+            <div class="position-absolute top-0 start-0 w-100 h-100" style="background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px); background-size: 20px 20px; pointer-events: none;"></div>
+            
+            <div class="position-absolute top-0 end-0 rounded-circle" style="width: 300px; height: 300px; background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%); transform: translate(30%, -30%); pointer-events: none;"></div>
+            <div class="position-absolute bottom-0 start-50 rounded-circle" style="width: 400px; height: 400px; background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%); transform: translate(-50%, 50%); pointer-events: none;"></div>
+
+            <div class="card-body p-4 p-lg-5 position-relative z-1">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="text-white">
+                        <div class="d-inline-flex align-items-center bg-white bg-opacity-25 rounded-pill px-3 py-2 mb-4 shadow-sm border border-white border-opacity-25" style="backdrop-filter: blur(10px);">
+                            <span class="d-flex align-items-center justify-content-center bg-white text-primary rounded-circle me-2" style="width: 24px; height: 24px;">
+                                <i class="bi bi-star-fill" style="font-size: 10px;"></i>
+                            </span>
+                            <span class="fw-semibold text-white" style="font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase;">Sistema de Inventario</span>
+                        </div>
+                        
+                        <h2 class="fw-bolder mb-3 display-5 text-white" style="letter-spacing: -0.03em; text-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            ¡Hola, {{ Auth::user()->name }}! 👋
+                        </h2>
+                        
+                        <p class="mb-0 fs-5" style="color: rgba(255,255,255,0.9); max-width: 500px; line-height: 1.6;">
+                            Aquí tienes el resumen en tiempo real de tus recursos educativos, aulas y movimientos recientes.
+                        </p>
+                    </div>
+                    
+                    <div class="d-none d-md-block opacity-25" style="transform: rotate(5deg);">
+                        <i class="bi bi-mortarboard-fill" style="font-size: 8rem; color: white; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));"></i>
+                    </div>
+                </div>
             </div>
+            
+            <style>
+                .hover-glass:hover {
+                    background-color: rgba(255,255,255,0.3) !important;
+                    transform: translateY(-2px);
+                }
+                .hover-scale:hover {
+                    transform: scale(1.05) translateY(-2px);
+                }
+                .hover-float:hover {
+                    transform: rotate(0deg) scale(1.05) !important;
+                }
+                .hover-float-reverse:hover {
+                    transform: rotate(0deg) scale(1.1) !important;
+                }
+                .tracking-wide {
+                    letter-spacing: 0.05em;
+                }
+            </style>
         </div>
 
         <!-- Stats Cards -->

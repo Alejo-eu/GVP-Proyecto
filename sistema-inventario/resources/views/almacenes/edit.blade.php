@@ -2,37 +2,25 @@
 
 @section('content')
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap');
-
     .edit-wrapper {
-        --primary: #2a6f97;
-        --secondary: #a9d6e5;
-        --tertiary: #ffb370;
-        --surface: #ffffff;
-        --background: #f8f9fa;
-        --on-surface: #191c1d;
-        --on-surface-variant: #40484e;
-        --error: #ba1a1a;
-        --success: #386471;
-        --input-bg: #f1f3f5;
-
-        font-family: 'Source Sans 3', sans-serif;
+        font-family: var(--font-body);
     }
 
     .edit-wrapper h2, .edit-wrapper h5 {
-        font-family: 'Manrope', sans-serif;
-        color: var(--on-surface);
+        font-family: var(--font-heading);
+        color: var(--text-main);
+        letter-spacing: -0.02em;
     }
 
     .edit-wrapper .text-muted {
-        color: var(--on-surface-variant) !important;
+        color: var(--text-muted) !important;
     }
 
     .custom-card {
         background-color: var(--surface);
-        border: none;
-        border-radius: 24px;
-        box-shadow: 0px 12px 40px rgba(42, 111, 151, 0.12);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-sm);
         padding: 16px;
     }
 
@@ -44,32 +32,32 @@
         align-items: center;
         justify-content: center;
         font-size: 32px;
-        background-color: rgba(42, 111, 151, 0.1);
+        background-color: var(--primary-light);
         color: var(--primary);
         margin: 0 auto 16px;
     }
 
     .custom-form-label {
         font-weight: 600;
-        color: var(--on-surface);
+        color: var(--text-main);
         margin-bottom: 8px;
     }
 
     .custom-form-control {
-        background-color: var(--input-bg);
+        background-color: #F8FAFC;
         border: 2px solid transparent;
         border-radius: 8px;
         padding: 12px 16px;
-        color: var(--on-surface);
+        color: var(--text-main);
         transition: all 0.3s ease;
-        font-family: 'Source Sans 3', sans-serif;
+        font-family: var(--font-body);
         width: 100%;
     }
 
     .custom-form-control:focus {
         background-color: var(--surface);
         border-color: var(--primary);
-        box-shadow: 0 0 0 4px rgba(42, 111, 151, 0.1);
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
         outline: none;
     }
 
@@ -79,7 +67,7 @@
         border: none;
         border-radius: 12px;
         padding: 12px 24px;
-        font-family: 'Manrope', sans-serif;
+        font-family: var(--font-heading);
         font-weight: 600;
         transition: all 0.3s ease;
         display: inline-flex;
@@ -88,19 +76,19 @@
     }
 
     .custom-btn-primary:hover {
-        background-color: #1a4f6d;
+        background-color: var(--primary-hover);
         transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(42, 111, 151, 0.25);
+        box-shadow: 0 8px 24px rgba(99, 102, 241, 0.25);
         color: white;
     }
 
     .custom-btn-light {
-        background-color: var(--input-bg);
-        color: var(--on-surface);
-        border: none;
+        background-color: #F8FAFC;
+        color: var(--text-main);
+        border: 1px solid var(--border-color);
         border-radius: 12px;
         padding: 12px 24px;
-        font-family: 'Manrope', sans-serif;
+        font-family: var(--font-heading);
         font-weight: 600;
         transition: all 0.3s ease;
         display: inline-flex;
@@ -110,9 +98,9 @@
     }
 
     .custom-btn-light:hover {
-        background-color: #e2e6ea;
+        background-color: #F1F5F9;
         transform: translateY(-2px);
-        color: var(--on-surface);
+        color: var(--text-main);
     }
     
     .badge-status {
@@ -122,8 +110,8 @@
         font-size: 14px;
         display: inline-block;
     }
-    .badge-active { background-color: rgba(56, 100, 113, 0.1); color: var(--success); }
-    .badge-inactive { background-color: rgba(186, 26, 26, 0.1); color: var(--error); }
+    .badge-active { background-color: var(--secondary-light); color: var(--secondary); }
+    .badge-inactive { background-color: #FEE2E2; color: #EF4444; }
 </style>
 
 <div class="container-fluid px-4 edit-wrapper">

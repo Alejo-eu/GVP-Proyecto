@@ -21,34 +21,33 @@
 
     <style>
         :root {
-            --primary: #4338CA;
-            /* Indigo 700 para más contraste */
-            --primary-hover: #3730A3;
+            --primary: #6366F1;
+            /* Indigo 500 para un look vibrante y moderno */
+            --primary-hover: #4F46E5;
             --primary-light: #EEF2FF;
-            /* Indigo 50 */
-            --secondary: #059669;
-            /* Emerald 600 */
-            --secondary-hover: #047857;
+            --secondary: #10B981;
+            /* Emerald 500 */
+            --secondary-hover: #059669;
             --secondary-light: #ECFDF5;
-            --background: #F3F4F6;
-            /* Gray 100 - Fondo principal más limpio */
+            --background: #F8FAFC;
+            /* Slate 50 - Fondo muy claro y limpio */
             --surface: #FFFFFF;
-            --text-main: #111827;
-            /* Gray 900 */
-            --text-muted: #6B7280;
-            /* Gray 500 */
-            --border-color: #E5E7EB;
-            /* Gray 200 */
+            --text-main: #0F172A;
+            /* Slate 900 */
+            --text-muted: #64748B;
+            /* Slate 500 */
+            --border-color: #E2E8F0;
+            /* Slate 200 */
             --font-heading: 'Outfit', sans-serif;
             --font-body: 'Inter', sans-serif;
-            --radius-md: 12px;
-            --radius-lg: 16px;
-            --radius-xl: 24px;
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
-            --shadow-hover: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.04);
+            --shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.05), 0 2px 6px -2px rgb(0 0 0 / 0.03);
+            --shadow-lg: 0 12px 24px -4px rgb(0 0 0 / 0.06), 0 8px 12px -6px rgb(0 0 0 / 0.04);
+            --shadow-hover: 0 24px 32px -8px rgb(0 0 0 / 0.08), 0 12px 16px -8px rgb(0 0 0 / 0.06);
+            --transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         body {
@@ -57,6 +56,60 @@
             color: var(--text-main);
             -webkit-font-smoothing: antialiased;
             letter-spacing: -0.01em;
+            animation: fadeInPage 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeInPage {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .loading-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .loader-content {
+            text-align: center;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+
+        .loading-overlay.active .loader-content {
+            transform: translateY(0);
+        }
+
+        .spinner-custom {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-left-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         h1,
@@ -73,11 +126,11 @@
 
         /* NAVBAR */
         .navbar {
-            background: rgba(255, 255, 255, 0.85) !important;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(229, 231, 235, 0.6);
-            padding: 14px 0;
+            background: rgba(255, 255, 255, 0.7) !important;
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            padding: 16px 0;
             z-index: 1030;
             box-shadow: var(--shadow-sm);
         }
@@ -105,10 +158,10 @@
             bottom: 0;
             left: 0;
             z-index: 100;
-            padding: 85px 16px 20px;
+            padding: 95px 20px 20px;
             background: var(--surface);
             border-right: 1px solid var(--border-color);
-            width: 270px;
+            width: 280px;
             transition: var(--transition);
         }
 
@@ -215,7 +268,7 @@
 
         /* CARDS */
         .card {
-            border: 1px solid rgba(229, 231, 235, 0.6);
+            border: 1px solid var(--border-color);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-sm);
             background: var(--surface);
@@ -224,9 +277,9 @@
         }
 
         .card:hover {
-            box-shadow: var(--shadow-hover);
-            border-color: var(--border-color);
-            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            border-color: #CBD5E1;
+            transform: translateY(-4px);
         }
 
         .card-header {
@@ -412,7 +465,7 @@
         .form-select:focus {
             background-color: var(--surface);
             border-color: var(--primary);
-            box-shadow: 0 0 0 4px var(--primary-light);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
             outline: none;
         }
 
@@ -735,6 +788,15 @@
 </head>
 
 <body>
+    <!-- Loading Overlay for Logout -->
+    <div id="logout-overlay" class="loading-overlay">
+        <div class="loader-content">
+            <div class="spinner-custom"></div>
+            <h4 style="color: white; font-family: 'Outfit', sans-serif; margin: 0 0 8px 0; font-size: 24px;">Cerrando sesión...</h4>
+            <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 15px;">Guardando tus datos de forma segura</p>
+        </div>
+    </div>
+
     <!-- Aviso para pantallas pequeñas (Celulares) -->
     <div id="mobile-warning-popup" class="mobile-warning-overlay">
         <div class="mobile-warning-card">
@@ -759,14 +821,14 @@
                 </button>
                 @endauth
                 <a class="navbar-brand" href="{{ url('/dashboard') }}">
-                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo-institution"
+                    <img src="https://gastonvidalporturas.edu.pe/wp-content/uploads/2024/06/Logo-colegio-gaston-vidal.png" alt="Logo Colegio Gaston Vidal" class="logo-institution"
                         onerror="this.src='https://ui-avatars.com/api/?name=Inst&background=4F46E5&color=fff&rounded=true&bold=true';">
                     Recursos Educativos</a>
 
                 <div class="ms-auto d-flex align-items-center gap-3">
                     <div class="d-none d-md-flex align-items-center" style="background: var(--primary-light); color: var(--primary); padding: 8px 16px; border-radius: 100px; font-weight: 600; font-size: 0.9rem;">
                         <i class="bi bi-calendar-event me-2"></i>
-                        {{ now()->format('d/m/Y') }}
+                        {{ ucfirst(now()->locale('es')->isoFormat('dddd, D [de] MMMM [del] YYYY')) }}
                     </div>
                     @auth
                         <div class="dropdown">
@@ -778,7 +840,8 @@
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">
+                                                             document.getElementById('logout-overlay').classList.add('active');
+                                                             setTimeout(() => document.getElementById('logout-form').submit(), 150);">
                                         <i class="bi bi-box-arrow-right me-2"></i>
                                         {{ __('Cerrar Sesión') }}
                                     </a>
